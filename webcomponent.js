@@ -58,7 +58,7 @@
                 .attr("id", "gauge")
                 .attr("width", this._widgetWidth)
                 .attr("height", this._widgetWidth);
-               }
+               };
 
                 var pi = Math.PI;  
                 this._outerRad = (this._widgetWidth)/2;
@@ -112,7 +112,7 @@
                 .attr("stroke-width", this._bracketThickness)
                 .attr("fill", "none");
 
-        }
+        };
 
         //Helper function 
         endPoints (lineLength, lineAngle){
@@ -120,7 +120,7 @@
             var endX = this._outerRad + (lineLength * Math.sin(lineAngle * (pi/180)));
             var endY = this._outerRad - (lineLength * Math.cos(lineAngle * (pi/180)));
             return {x:endX, y:endY}
-        }
+        };
     
     });
         
