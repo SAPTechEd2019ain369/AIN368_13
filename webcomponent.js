@@ -40,17 +40,22 @@
             this._endAngleDeg = 0.0;
             this._endAngleDegMax = 145.0;
             this._startAngleDeg = -145.0;
+
+        };
+        
+            
+            onCustomWidgetResize(width, height) {  
             const bcRect = this.getBoundingClientRect();
             this._widgetHeight = bcRect.height;
             this._widgetWidth = bcRect.width;
-
+            this.redraw();
+        }
+        
+        redraw() {
             if (this._widgetHeight < this._widgetWidth){
                 this._widgetWidth = this._widgetHeight;
                }
-            this.redraw();
-        };
-        
-        redraw() {
+
             if (!this._svgContainer){
                 this._svgContainer = window._d3.select(this._shadowRoot)
                 .append("svg:svg")
