@@ -41,6 +41,11 @@
             this._endAngleDegMax = 145.0;
             this._startAngleDeg = -145.0;
 
+            this._ringColorCode = 'black';
+            this._guideOpacity = 0.75;
+            this._ringThickness = 5;
+            this._bracketThickness = 5;
+
         };
         
             
@@ -62,7 +67,14 @@
                 .attr("id", "gauge")
                 .attr("width", this._widgetWidth)
                 .attr("height", this._widgetWidth);
-               }
+               }else{
+                window._d3.select(this._shadowRoot).selectAll("*").remove();
+                this._svgContainer = window._d3.select(this._shadowRoot)
+                .append("svg:svg")
+                .attr("id", "gauge")
+                .attr("width", this._widgetWidth)
+                .attr("height", this._widgetWidth);
+            }
 
             var pi = Math.PI;  
             this._outerRad = (this._widgetWidth)/2;
@@ -119,11 +131,11 @@
         };
 
         //Helper function 
-endPoints (lineLength, lineAngle){
-    var pi = Math.PI;
-    var endX = this._outerRad + (lineLength * Math.sin(lineAngle * (pi/180)));
-    var endY = this._outerRad - (lineLength * Math.cos(lineAngle * (pi/180)));
-    return {x:endX, y:endY}
+        endPoints (lineLength, lineAngle){
+            var pi = Math.PI;
+            var endX = this._outerRad + (lineLength * Math.sin(lineAngle * (pi/180)));
+            var endY = this._outerRad - (lineLength * Math.cos(lineAngle * (pi/180)));
+            return {x:endX, y:endY}
    };
     
     });
